@@ -5,6 +5,9 @@
  */
 package mvc;
 
+import modelo.persona;
+import vista.usuario;
+
 /**
  *
  * @author kevin
@@ -15,7 +18,9 @@ public class Mvc {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        persona kevin=new persona("kevin", "chamorro","condado",'m',178654654,995151541,25, true);
+        usuario u=new usuario();
+        u.menu();
     }
     
 }
