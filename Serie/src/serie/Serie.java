@@ -20,9 +20,9 @@ public class Serie {
         Scanner sc= new Scanner(System.in);
         System.out.println("Ingrese el numero a calcular");
         int num=sc.nextInt();
-        numero n= new numero(num);
+        numero n= new numero();
+        n.setNumero(num);
         System.out.println("El resultado es: "+n.calcular());
-        
     }
     
 }

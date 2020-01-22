@@ -12,8 +12,6 @@ package serie;
 public class numero {
     int numero;
 
-
-
     public int getNumero() {
         return numero;
     }
@@ -22,15 +20,8 @@ public class numero {
         this.numero = numero;
     }
 
-    public numero(int numero) {
-        this.numero = numero;
-    }
+    public numero() {
 
-    
-
-    @Override
-    public String toString() {
-        return "numero{" + "numero=" + numero + '}';
     }
     
     public int calcular(){
