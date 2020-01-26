@@ -1,21 +1,27 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+Realizar un proyecto que tenga la clase fecha(dia, mes , anio)
+
+Empleado(nombre,apellidos,fecha_ingreso, fecha_nacimiento, salario)
+
+instanciar la clase Empleado en el main
+
+sacar cual es el empleado con mayor salario y el mas antiguo
  */
 package deber2;
 
-/**
- *
- * @author Sistemas
- */
+import javax.swing.JOptionPane;
+
 public class Deber2 {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        // TODO code application logic here
+        fecha f= new fecha();
+        empleado e= new empleado();
+        int dimension=Integer.parseInt(JOptionPane.showInputDialog(null,"Ingrese el numero de empleados:"));
+        e.ingresoDatos(dimension);
+        System.out.println("Día: "+f.getDia()+" Mes: "+f.getMes()+" Año: "+f.getAnio());
+        e.impresionEmpleados(dimension);
+        System.out.println(e.masSalario(dimension));
+        System.out.println(e.masAntiguo(dimension));
     }
     
 }
