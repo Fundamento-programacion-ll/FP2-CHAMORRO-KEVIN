@@ -5,8 +5,9 @@
  */
 package conexionbdd;
 
-import com.mysql.jdbc.PreparedStatement;
+
 import conexion.conector;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,15 +28,10 @@ public class ConexionBDD {
         
         // Insert
         
-        String insert =
-"insert into "
-+ "articulos(nombre,descripcion,precio) "
-+ "values(?,?,?) ";
+        String insert ="insert into articulos(nombre,descripcion,precio) values(?,?,?)";
         
         try {
-            ps = (PreparedStatement) stringConexion
-                    .getConxion()
-                    .prepareStatement(insert);
+            ps = (PreparedStatement) stringConexion.getConxion().prepareStatement(insert);
             ps.setString(1, "X box");
             ps.setString(2, "Consola juegos");
             ps.setDouble(3, 500);
