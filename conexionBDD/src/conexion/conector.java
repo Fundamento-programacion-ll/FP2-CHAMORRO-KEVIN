@@ -5,8 +5,7 @@
  */
 package conexion;
 
-
-import java.sql.Connection;
+import com.mysql.jdbc.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -19,7 +18,8 @@ import java.util.logging.Logger;
 public class conector {
     
     Connection conexion = null;
-    String url = "jdbc:mysql://localhost:3306/prueba?allowPublicKeyRetrieval=true&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+    String url = 
+   "jdbc:mysql://localhost:3306/prueba?useSSL=false";
     String usuario = "admin";
     String password = "12345678";
     
