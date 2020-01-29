@@ -6,6 +6,9 @@
 package Vista;
 
 import controlador.controladorArticulo;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import modelo.articulo;
 
 /**
@@ -14,7 +17,7 @@ import modelo.articulo;
  */
 public class ListarArticulo extends javax.swing.JFrame {
     articulo consultaarticulo = new articulo();
-        controladorArticulo articulocontrolador = new controladorArticulo();
+    controladorArticulo articulocontrolador = new controladorArticulo();
 
     /**
      * Creates new form ListarArticulo
@@ -34,9 +37,9 @@ public class ListarArticulo extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        cbx_opc = new javax.swing.JComboBox<>();
+        cbTipoBuscar = new javax.swing.JComboBox<String>();
         btn_buscar = new javax.swing.JButton();
-        txt_opc = new javax.swing.JTextField();
+        txtBuscar = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -44,7 +47,7 @@ public class ListarArticulo extends javax.swing.JFrame {
 
         jLabel2.setText("Buscar por medio de:");
 
-        cbx_opc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombre", "id" }));
+        cbTipoBuscar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "ID", "Nombre", "Precio" }));
 
         btn_buscar.setText("BUSCAR");
         btn_buscar.addActionListener(new java.awt.event.ActionListener() {
@@ -53,9 +56,9 @@ public class ListarArticulo extends javax.swing.JFrame {
             }
         });
 
-        txt_opc.addActionListener(new java.awt.event.ActionListener() {
+        txtBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_opcActionPerformed(evt);
+                txtBuscarActionPerformed(evt);
             }
         });
 
@@ -67,9 +70,9 @@ public class ListarArticulo extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
-                    .addComponent(cbx_opc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbTipoBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(txt_opc, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txtBuscar, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(btn_buscar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(jLabel1))
                 .addContainerGap(97, Short.MAX_VALUE))
@@ -82,9 +85,9 @@ public class ListarArticulo extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cbx_opc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cbTipoBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt_opc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(9, 9, 9)
                 .addComponent(btn_buscar)
                 .addContainerGap(43, Short.MAX_VALUE))
@@ -93,18 +96,24 @@ public class ListarArticulo extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txt_opcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_opcActionPerformed
+    private void txtBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_opcActionPerformed
+    }//GEN-LAST:event_txtBuscarActionPerformed
 
     private void btn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarActionPerformed
-        if(cbx_opc.getSelectedIndex()==0){
-            String nombre = txt_opc.getText();
-            articulocontrolador.Cosultaarticulonombre(nombre);
-        }else {
-            int precio = Integer.parseInt(txt_opc.getText());
-            articulocontrolador.Cosultaarticuloprecio(precio);
+        try {
+            String item = cbTipoBuscar.getSelectedItem().toString();
+            
+            System.out.println("item " + item);
+            
+            String valorABuscar = txtBuscar.getText();
+            
+            articulocontrolador.BuscarDatosPorIdNombre(item, valorABuscar);
+        } catch (SQLException ex) {
+            Logger.getLogger(ListarArticulo.class.getName()).log(Level.SEVERE, null, ex);
         }
+
+     
     }//GEN-LAST:event_btn_buscarActionPerformed
 
     /**
@@ -144,9 +153,9 @@ public class ListarArticulo extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_buscar;
-    private javax.swing.JComboBox<String> cbx_opc;
+    private javax.swing.JComboBox<String> cbTipoBuscar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JTextField txt_opc;
+    private javax.swing.JTextField txtBuscar;
     // End of variables declaration//GEN-END:variables
 }
