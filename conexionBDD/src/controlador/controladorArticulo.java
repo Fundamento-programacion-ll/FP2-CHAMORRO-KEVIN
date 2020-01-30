@@ -9,6 +9,7 @@ import conexion.conector;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -22,7 +23,7 @@ public class controladorArticulo {
     conector conexion = new conector();
     PreparedStatement ps = null;
     ResultSet rs = null;
-    
+    articulo arti=new articulo();
     public void ingresarArticulo(articulo nuevoArticulo){
         
         String sqlInsert = 
@@ -141,5 +142,59 @@ public class controladorArticulo {
 
         }
 
+    }
+    public void ActualizarCliente(articulo arti) {
+
+        
+
+        String sqlact = "UPDATE articulos SET nombre=?, descripcion=?, precio=? WHERE idArticulo = ?";
+
+        PreparedStatement ps =null;
+
+        
+
+            try {
+
+                ps = conexion.getConxion().prepareStatement(sqlact);
+
+
+                ps.setString(2, arti.getNombre());
+
+                ps.setString(3, arti.getDescr());
+
+                ps.setFloat(4, arti.getPrecio());
+
+                ps.executeUpdate();
+
+                
+
+                JOptionPane.showMessageDialog(null, "Datos Actualizados");
+
+            } catch (SQLException ex) {
+
+                System.out.println("ERROR"+ ex);
+
+                  JOptionPane.showMessageDialog(null, "ERROR");
+
+            }
+
+    }
+    public ArrayList obtenerDatos() throws SQLException{
+        ArrayList <String> listaNombres = new ArrayList<>();
+        String selectDatos = "select nombre from articulos";
+        ps= conexion.getConxion().clientPrepareStatement(selectDatos);
+        rs= ps.executeQuery();
+        while (rs.next()) {            
+            listaNombres.add(rs.getString(1));
+        }
+        return listaNombres;
+    }
+    public void cargarCuadros(String nombre) throws SQLException{
+        String selectCob="select * from articulos where nombre= "+"'"+nombre+"'"+"";
+        ps=conexion.getConxion().clientPrepareStatement(selectCob);
+        rs=ps.executeQuery();
+        arti.setNombre(nombre);
+        arti.setDescr(rs.getString("descripcion"));
+        arti.setPrecio(rs.getFloat("precio"));
     }
 }
