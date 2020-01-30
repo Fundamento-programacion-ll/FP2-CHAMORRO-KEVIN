@@ -10,7 +10,7 @@ package modelo;
  * @author antho
  */
 public class articulo {
-    private String nombre;
+    String nombre;
     String descr;
     float precio;
 

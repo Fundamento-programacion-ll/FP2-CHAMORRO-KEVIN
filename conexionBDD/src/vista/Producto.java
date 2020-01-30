@@ -19,9 +19,10 @@ import modelo.articulo;
 public class Producto extends javax.swing.JFrame {
         articulo nuevoarticulo = new articulo();
         controladorArticulo articulocontrolador = new controladorArticulo();
+        ArrayList <String> listaNombres;
     public Producto() {
         initComponents();  
-        ArrayList <String> listaNombres;
+        
             try {
                 System.out.println("Imprimir lista");
                 listaNombres=articulocontrolador.obtenerDatos();
@@ -177,17 +178,19 @@ public class Producto extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_limpiarActionPerformed
 
     private void cbRegistroItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbRegistroItemStateChanged
-        String nombre;
-        nombre=cbRegistro.getSelectedItem().toString();
-        //System.out.println(nombre);
+        if (evt.getStateChange() == 1) {
+            System.out.println(evt.getItem().toString());
             try {
-                articulocontrolador.cargarCuadros(nombre);
-                txtdescp.setText(nuevoarticulo.getDescr());
-                txtnombre.setText(nuevoarticulo.getNombre());
-                txtprecio.setText(String.valueOf(nuevoarticulo.getPrecio()));
+                listaNombres=articulocontrolador.obtenerDatos();
+                for ( : listaNombres) {
+                    
+                }
             } catch (SQLException ex) {
                 Logger.getLogger(Producto.class.getName()).log(Level.SEVERE, null, ex);
             }
+            
+
+        }
         
     }//GEN-LAST:event_cbRegistroItemStateChanged
 

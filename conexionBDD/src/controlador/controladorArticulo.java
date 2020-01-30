@@ -180,21 +180,59 @@ public class controladorArticulo {
 
     }
     public ArrayList obtenerDatos() throws SQLException{
-        ArrayList <String> listaNombres = new ArrayList<>();
-        String selectDatos = "select nombre from articulos";
-        ps= conexion.getConxion().clientPrepareStatement(selectDatos);
-        rs= ps.executeQuery();
+
+
+
+        ArrayList<articulo> listaNombres = new ArrayList<>();        
+
+
+
+        String selectDatos = "select * from articulos";
+
+
+
+        ps = conexion.getConxion().prepareStatement(selectDatos);
+
+
+
+        rs = ps.executeQuery();
+
         while (rs.next()) {            
-            listaNombres.add(rs.getString(1));
+
+
+
+            articulo art = new articulo();
+
+
+
+            art.setNombre(rs.getString(2));
+
+
+
+            art.setDescr(rs.getString(3));
+
+
+
+            art.setPrecio(rs.getInt(4));
+
+
+
+            listaNombres.add(art);
+
+
+
         }
+
+
         return listaNombres;
     }
+    
     public void cargarCuadros(String nombre) throws SQLException{
         String selectCob="select * from articulos where nombre= "+"'"+nombre+"'"+"";
         ps=conexion.getConxion().clientPrepareStatement(selectCob);
         rs=ps.executeQuery();
         arti.setNombre(nombre);
-        arti.setDescr(rs.getString("descripcion"));
-        arti.setPrecio(rs.getFloat("precio"));
+        arti.setDescr(rs.getString(2));
+        arti.setPrecio(rs.getFloat(3));
     }
 }
