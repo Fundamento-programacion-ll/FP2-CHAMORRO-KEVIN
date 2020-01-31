@@ -235,5 +235,16 @@ public class controladorArticulo {
         }
         return listaNombres;
     }
-
+    public void eliminarRegistro(){
+        String delete="delete * from articulos where nombre= ?";
+        try {
+            ps=conexion.getConxion().clientPrepareStatement(delete);
+            ps.setString(2, delete);
+        } catch (SQLException ex) {
+            Logger.getLogger(controladorArticulo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        
+    }
 }

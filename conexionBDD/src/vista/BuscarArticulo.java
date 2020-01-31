@@ -55,7 +55,7 @@ public class BuscarArticulo extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        cbx_opc = new javax.swing.JComboBox<>();
+        cbx_opc = new javax.swing.JComboBox<String>();
         jLabel2 = new javax.swing.JLabel();
         txt_nombre = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -65,6 +65,7 @@ public class BuscarArticulo extends javax.swing.JFrame {
         txt_descripcion = new javax.swing.JTextArea();
         jButton1 = new javax.swing.JButton();
         btn_act = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -110,6 +111,13 @@ public class BuscarArticulo extends javax.swing.JFrame {
             }
         });
 
+        btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -140,7 +148,9 @@ public class BuscarArticulo extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txt_precio, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
                             .addComponent(txt_nombre))))
-                .addContainerGap(160, Short.MAX_VALUE))
+                .addGap(23, 23, 23)
+                .addComponent(btnEliminar)
+                .addContainerGap(68, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -164,7 +174,8 @@ public class BuscarArticulo extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(btn_act))
+                    .addComponent(btn_act)
+                    .addComponent(btnEliminar))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
@@ -212,6 +223,10 @@ public class BuscarArticulo extends javax.swing.JFrame {
         
     }//GEN-LAST:event_cbx_opcActionPerformed
 
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -248,6 +263,7 @@ public class BuscarArticulo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btn_act;
     private javax.swing.JComboBox<String> cbx_opc;
     private javax.swing.JButton jButton1;
