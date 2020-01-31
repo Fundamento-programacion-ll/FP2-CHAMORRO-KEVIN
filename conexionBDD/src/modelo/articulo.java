@@ -13,7 +13,10 @@ public class articulo {
     String nombre;
     String descr;
     float precio;
+    
 
+    
+    
     public String getNombre() {
         return nombre;
     }
@@ -46,6 +49,8 @@ public class articulo {
         this.descr = descr;
         this.precio = precio;
     }
+
+    
     
     
 }

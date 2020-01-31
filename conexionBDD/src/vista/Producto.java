@@ -6,10 +6,6 @@
 package Vista;
 
 import controlador.controladorArticulo;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import modelo.articulo;
 
 /**
@@ -19,22 +15,8 @@ import modelo.articulo;
 public class Producto extends javax.swing.JFrame {
         articulo nuevoarticulo = new articulo();
         controladorArticulo articulocontrolador = new controladorArticulo();
-        ArrayList <String> listaNombres;
     public Producto() {
-        initComponents();  
-        
-            try {
-                System.out.println("Imprimir lista");
-                listaNombres=articulocontrolador.obtenerDatos();
-                for (String nombre : listaNombres) {
-                    System.out.println(nombre);
-                    cbRegistro.addItem(nombre);
-                }
-            } catch (SQLException ex) {
-                Logger.getLogger(Producto.class.getName()).log(Level.SEVERE, null, ex);
-            }
-      
-        
+        initComponents();   
     }
 
     /**
@@ -56,7 +38,6 @@ public class Producto extends javax.swing.JFrame {
         txtdescp = new javax.swing.JLabel();
         btn_agregar = new javax.swing.JButton();
         btn_limpiar = new javax.swing.JButton();
-        cbRegistro = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -86,12 +67,6 @@ public class Producto extends javax.swing.JFrame {
             }
         });
 
-        cbRegistro.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cbRegistroItemStateChanged(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -116,12 +91,8 @@ public class Producto extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btn_limpiar)
                     .addComponent(txtdescp)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addComponent(jLabel4)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cbRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
                 .addContainerGap(78, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -132,8 +103,7 @@ public class Producto extends javax.swing.JFrame {
                         .addGap(19, 19, 19)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
-                            .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cbRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel4)))
@@ -177,23 +147,6 @@ public class Producto extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btn_limpiarActionPerformed
 
-    private void cbRegistroItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbRegistroItemStateChanged
-        if (evt.getStateChange() == 1) {
-            System.out.println(evt.getItem().toString());
-            try {
-                listaNombres=articulocontrolador.obtenerDatos();
-                for ( : listaNombres) {
-                    
-                }
-            } catch (SQLException ex) {
-                Logger.getLogger(Producto.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
-
-        }
-        
-    }//GEN-LAST:event_cbRegistroItemStateChanged
-
     /**
      * @param args the command line arguments
      */
@@ -232,7 +185,6 @@ public class Producto extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_agregar;
     private javax.swing.JButton btn_limpiar;
-    private javax.swing.JComboBox cbRegistro;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;

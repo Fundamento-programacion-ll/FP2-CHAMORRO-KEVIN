@@ -22,8 +22,8 @@ import modelo.articulo;
 public class controladorArticulo {
     conector conexion = new conector();
     PreparedStatement ps = null;
-    ResultSet rs = null;
-    articulo arti=new articulo();
+    ResultSet rsconsult = null;
+    
     public void ingresarArticulo(articulo nuevoArticulo){
         
         String sqlInsert = 
@@ -66,173 +66,174 @@ public class controladorArticulo {
         }
     }**/
     
-   public void BuscarDatosPorIdNombre (String tipoBusqueda, String valorABuscar) throws SQLException{ //
-
-        if (tipoBusqueda.equalsIgnoreCase("ID")) {
-
-           int IdArticulo = Integer.parseInt(valorABuscar);
-
-           String sqlSelectID = "select * from articulos where idArticulo LIKE "+"'%"+IdArticulo+"%'"+"";            
-
-                ps = conexion.getConxion().prepareStatement(sqlSelectID);
-
-                //ps.setInt(1, IdArticulo);
-
-                rs  = ps.executeQuery();
-
-                while (rs.next()) {                    
-
-                    System.out.println("nombre: "+rs.getString(2));
-
-                    System.out.println("descripcion: "+rs.getString(3));
-
-                    System.out.println("precio: "+rs.getFloat(4));
-
-                }                      
-
-        }
-
-        
-
-        if (tipoBusqueda.equalsIgnoreCase("nombre")) {
-
-            // SELECT * FROM Customers
-
-            //WHERE CustomerName LIKE '%mar';
-
-            String sqlSelectID = "select * from articulos where nombre LIKE "+"'%"+valorABuscar+"%'"+"";
-
-            System.out.println(sqlSelectID);
-
-                ps = conexion.getConxion().prepareStatement(sqlSelectID);
-
-                //ps.setString(1, valorABuscar);
-
-                rs  = ps.executeQuery();
-
-                while (rs.next()) {                    
-
-                    System.out.println("nombre: "+rs.getString(2));
-
-                    System.out.println("descripcion: "+rs.getString(3));
-
-                    System.out.println("precio: "+rs.getFloat(4));
-
-                }
-
-        }
-
-        if (tipoBusqueda.equalsIgnoreCase("ninguno")) {
-
-            String sqlSelectID ="select * from articulos";            
-
-                ps = conexion.getConxion().prepareStatement(sqlSelectID);                
-
-                rs  = ps.executeQuery();
-
-                while (rs.next()) {                    
-
-                    System.out.println("nombre: "+rs.getString(2));
-
-                    System.out.println("descripcion: "+rs.getString(3));
-
-                    System.out.println("precio: "+rs.getFloat(4));
-
-                }
-
-        }
-
-    }
-    public void ActualizarCliente(articulo arti) {
-
-        
-
-        String sqlact = "UPDATE articulos SET nombre=?, descripcion=?, precio=? WHERE idArticulo = ?";
-
-        PreparedStatement ps =null;
-
-        
-
-            try {
-
-                ps = conexion.getConxion().prepareStatement(sqlact);
-
-
-                ps.setString(2, arti.getNombre());
-
-                ps.setString(3, arti.getDescr());
-
-                ps.setFloat(4, arti.getPrecio());
-
-                ps.executeUpdate();
-
-                
-
-                JOptionPane.showMessageDialog(null, "Datos Actualizados");
-
-            } catch (SQLException ex) {
-
-                System.out.println("ERROR"+ ex);
-
-                  JOptionPane.showMessageDialog(null, "ERROR");
-
+    public void Cosultaarticuloprecio (int consultaarticulo){
+        String nombre ="";
+        String sqlconsult = 
+                "Select * from articulos where idArticulo = ?";
+        try {
+            ps = conexion.getConxion().prepareStatement(sqlconsult);
+            ps.setInt(1, consultaarticulo);
+            rsconsult = ps.executeQuery();
+            
+            while(rsconsult.next()){
+                nombre= rsconsult.getString("nombre");
+                String descripcion= rsconsult.getString("descripcion");
+                float precio= rsconsult.getFloat("precio");
+                if (rsconsult.next()==true){
+                System.out.println("El producto es: "+ nombre +" "+ descripcion +" "+ precio);}
             }
-
-    }
-    public ArrayList obtenerDatos() throws SQLException{
-
-
-
-        ArrayList<articulo> listaNombres = new ArrayList<>();        
-
-
-
-        String selectDatos = "select * from articulos";
-
-
-
-        ps = conexion.getConxion().prepareStatement(selectDatos);
-
-
-
-        rs = ps.executeQuery();
-
-        while (rs.next()) {            
-
-
-
-            articulo art = new articulo();
-
-
-
-            art.setNombre(rs.getString(2));
-
-
-
-            art.setDescr(rs.getString(3));
-
-
-
-            art.setPrecio(rs.getInt(4));
-
-
-
-            listaNombres.add(art);
-
-
-
+            
+            JOptionPane.showMessageDialog(null, "Consulta realizada");
+            
+        } catch (SQLException ex) {
+            System.out.println("ERROR"+ ex);
+                  JOptionPane.showMessageDialog(null, "ERROR");
         }
-
-
-        return listaNombres;
+    }
+    public void Cosultaarticulonombre (String consultaarticulo){
+        String nombre2 ="";
+        String sqlconsult = 
+                "Select * from articulos where nombre = ?";
+        try {
+            ps = conexion.getConxion().prepareStatement(sqlconsult);
+            ps.setString(1, consultaarticulo);
+            rsconsult = ps.executeQuery();
+            
+            while(rsconsult.next()){
+                
+                nombre2= rsconsult.getString("nombre");
+                
+                String descripcion= rsconsult.getString("descripcion");
+                
+                float precio= rsconsult.getFloat("precio");
+                System.out.println("El producto es: "+ nombre2 + " "+ descripcion + " "+ precio);
+                if (rsconsult.next()==true){
+                System.out.println("El producto es: "+ nombre2 +" "+ descripcion +" "+ precio);}
+            }
+            
+            JOptionPane.showMessageDialog(null, "Consulta realizada");
+        } catch (SQLException ex) {
+            System.out.println("ERROR"+ ex);
+                  JOptionPane.showMessageDialog(null, "ERROR");
+        }
+    }
+    public void Cosultaarticulo (String nombre, String consultaarticulo){
+        
+        String sqlconsult = 
+                "Select * from articulos where idArticulo = ?";
+        try {
+            ps = conexion.getConxion().prepareStatement(sqlconsult);
+            ps.setString(1, consultaarticulo);
+            rsconsult = ps.executeQuery();
+            
+            while(rsconsult.next()){
+                nombre= rsconsult.getString("nombre");
+                String descripcion= rsconsult.getString("descripcion");
+                float precio= rsconsult.getFloat("precio");
+                if (rsconsult.next()==true){
+                System.out.println("El producto es: "+ nombre +" "+ descripcion +" "+ precio);}
+            }
+            
+            JOptionPane.showMessageDialog(null, "Consulta realizada");
+            
+        } catch (SQLException ex) {
+            System.out.println("ERROR"+ ex);
+                  JOptionPane.showMessageDialog(null, "ERROR");
+        }
     }
     
-    public void cargarCuadros(String nombre) throws SQLException{
-        String selectCob="select * from articulos where nombre= "+"'"+nombre+"'"+"";
-        ps=conexion.getConxion().clientPrepareStatement(selectCob);
-        rs=ps.executeQuery();
-        arti.setNombre(nombre);
-        arti.setDescr(rs.getString(2));
-        arti.setPrecio(rs.getFloat(3));
+    public articulo consultararticulo (int idarticulo){
+        articulo art = null;
+        String nombre ="";
+        String sqlconsult = 
+                "Select * from articulos where idArticulo = ?";
+        try {
+            ps = conexion.getConxion().prepareStatement(sqlconsult);
+            ps.setInt(1, idarticulo);
+            rsconsult = ps.executeQuery();
+            
+            while(rsconsult.next()){
+                nombre= rsconsult.getString("nombre");
+                String descripcion= rsconsult.getString("descripcion");
+                float precio= rsconsult.getFloat("precio");
+                if (rsconsult.next()==true){
+                System.out.println("El producto es: "+ nombre +" "+ descripcion +" "+ precio);}
+                art = new articulo(nombre, descripcion, precio);
+            }
+            
+            JOptionPane.showMessageDialog(null, "Consulta realizada");
+            
+        } catch (SQLException ex) {
+            System.out.println("ERROR"+ ex);
+                  JOptionPane.showMessageDialog(null, "ERROR");
+        }
+        
+    return art;
     }
+    
+    public articulo consultararticulonom (String nombr){
+        articulo art = null;
+        String nombre ="";
+        String sqlconsult = 
+                "Select * from articulos where nombre = ?";
+        try {
+            ps = conexion.getConxion().prepareStatement(sqlconsult);
+            ps.setString(1, nombr);
+            rsconsult = ps.executeQuery();
+            
+            while(rsconsult.next()){
+                
+                nombre= rsconsult.getString("nombre");
+                String descripcion= rsconsult.getString("descripcion");
+                float precio= rsconsult.getFloat("precio");
+                System.out.println("El producto es: "+ nombre + " "+ descripcion + " "+ precio);
+                if (rsconsult.next()==true){
+                System.out.println("El producto es: "+ nombre +" "+ descripcion +" "+ precio);}
+                art = new articulo(nombre, descripcion, precio);
+            }
+            
+            JOptionPane.showMessageDialog(null, "Consulta realizada");
+            
+        } catch (SQLException ex) {
+            System.out.println("ERROR"+ ex);
+                  JOptionPane.showMessageDialog(null, "ERROR");
+        }
+        
+    return art;
+    }
+    public void ActualizarCliente(articulo cli) {
+        
+        String sqlact = "UPDATE articulos SET nombre=?, descripcion=?, precio=? WHERE nombre = ?";
+        PreparedStatement ps =null;
+        
+            try {
+                ps = conexion.getConxion().prepareStatement(sqlact);
+                ps.setString(1, cli.getNombre());
+                ps.setString(2, cli.getDescr());
+                ps.setFloat(3, cli.getPrecio());
+                ps.setString(4, cli.getNombre());
+                ps.executeUpdate();
+                
+                JOptionPane.showMessageDialog(null, "Datos Actualizados");
+            } catch (SQLException ex) {
+                System.out.println("ERROR"+ ex);
+                  JOptionPane.showMessageDialog(null, "ERROR");
+            }
+    }
+    
+   public ArrayList obtenerDatos() throws SQLException{
+        ArrayList<articulo> listaNombres = new ArrayList<>();        
+        String selectDatos = "select * from articulos";
+        ps = conexion.getConxion().prepareStatement(selectDatos);
+        rsconsult = ps.executeQuery();        
+        while (rsconsult.next()) {            
+            articulo art = new articulo();
+            art.setNombre(rsconsult.getString(2));
+            art.setDescr(rsconsult.getString(3));
+            art.setPrecio(rsconsult.getInt(4));
+            listaNombres.add(art);
+        }
+        return listaNombres;
+    }
+
 }

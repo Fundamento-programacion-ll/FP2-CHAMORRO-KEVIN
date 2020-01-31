@@ -6,9 +6,6 @@
 package Vista;
 
 import controlador.controladorArticulo;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import modelo.articulo;
 
 /**
@@ -16,8 +13,8 @@ import modelo.articulo;
  * @author antho
  */
 public class ListarArticulo extends javax.swing.JFrame {
-    articulo consultaarticulo = new articulo();
-    controladorArticulo articulocontrolador = new controladorArticulo();
+        articulo consultaarticulo = new articulo();
+        controladorArticulo articulocontrolador = new controladorArticulo();
 
     /**
      * Creates new form ListarArticulo
@@ -37,11 +34,18 @@ public class ListarArticulo extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        cbTipoBuscar = new javax.swing.JComboBox<String>();
+        cbx_opc = new javax.swing.JComboBox<>();
         btn_buscar = new javax.swing.JButton();
-        txtBuscar = new javax.swing.JTextField();
+        txt_opc = new javax.swing.JTextField();
+        txt_imprimir = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        txt_precio = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblDatos = new javax.swing.JTable();
+        txt_descripcion = new javax.swing.JTextArea();
+        btn_actualizar = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -49,7 +53,7 @@ public class ListarArticulo extends javax.swing.JFrame {
 
         jLabel2.setText("Buscar por medio de:");
 
-        cbTipoBuscar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "ID", "Nombre", "Precio" }));
+        cbx_opc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombre", "id", "Ninguno" }));
 
         btn_buscar.setText("BUSCAR");
         btn_buscar.addActionListener(new java.awt.event.ActionListener() {
@@ -58,83 +62,152 @@ public class ListarArticulo extends javax.swing.JFrame {
             }
         });
 
-        txtBuscar.addActionListener(new java.awt.event.ActionListener() {
+        txt_opc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtBuscarActionPerformed(evt);
+                txt_opcActionPerformed(evt);
             }
         });
 
-        tblDatos.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "ID", "Nombre", "Descripcion", "Precio"
+        jLabel3.setText("Nombre");
+
+        jLabel4.setText("Precio");
+
+        jLabel5.setText("Descrippcion");
+
+        txt_descripcion.setColumns(20);
+        txt_descripcion.setRows(5);
+        jScrollPane1.setViewportView(txt_descripcion);
+
+        btn_actualizar.setText("Actualizar");
+        btn_actualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_actualizarActionPerformed(evt);
             }
-        ));
-        jScrollPane1.setViewportView(tblDatos);
+        });
+
+        jButton2.setText("Limpiar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(cbTipoBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(txtBuscar, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(btn_buscar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(cbx_opc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(txt_opc, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btn_buscar))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txt_imprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel4)
+                                    .addComponent(txt_precio, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel3))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel5)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(1, 1, 1)
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(btn_actualizar)
+                                            .addComponent(jButton2)))))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(136, 136, 136)
+                        .addComponent(jLabel1)))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(6, 6, 6)
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbx_opc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_opc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_buscar))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txt_imprimir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cbTipoBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(9, 9, 9)
-                        .addComponent(btn_buscar)))
-                .addContainerGap(19, Short.MAX_VALUE))
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txt_precio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addGap(12, 12, 12)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btn_actualizar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton2)))))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarActionPerformed
+    private void txt_opcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_opcActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtBuscarActionPerformed
+    }//GEN-LAST:event_txt_opcActionPerformed
 
     private void btn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarActionPerformed
-        try {
-            String item = cbTipoBuscar.getSelectedItem().toString();
+        if(cbx_opc.getSelectedIndex()==0){
+            String nombre = txt_opc.getText();
+            articulo consultaarticulo = new controladorArticulo().consultararticulonom(nombre);
+            float pre = consultaarticulo.getPrecio();
+            String p = Float.toString(pre);
+            txt_imprimir.setText(consultaarticulo.getNombre());
+            txt_precio.setText(p);
+            txt_descripcion.setText(consultaarticulo.getDescr());
             
-            System.out.println("item " + item);
+        }else if(cbx_opc.getSelectedIndex()==1){
+            int id = Integer.parseInt(txt_opc.getText());
+            articulo consultaarticulo = new controladorArticulo().consultararticulo(id);
+            float pre = consultaarticulo.getPrecio();
+            String p = Float.toString(pre);
+            txt_imprimir.setText(consultaarticulo.getNombre());
+            txt_precio.setText(p);
+            txt_descripcion.setText(consultaarticulo.getDescr());
+            int precio = Integer.parseInt(txt_opc.getText());
             
-            String valorABuscar = txtBuscar.getText();
-            
-            articulocontrolador.BuscarDatosPorIdNombre(item, valorABuscar);
-        } catch (SQLException ex) {
-            Logger.getLogger(ListarArticulo.class.getName()).log(Level.SEVERE, null, ex);
+        }else {
+            System.out.println("Seleccione uno");
         }
-
-     
     }//GEN-LAST:event_btn_buscarActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        txt_descripcion.setText("");
+        txt_imprimir.setText("");
+        txt_opc.setText("");
+        txt_precio.setText("");
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
+        
+//        articulo arti = new articulo(txt_imprimir.getText(), txt_descripcion.getText(),Float.parseFloat(txt_precio.getText()), Integer.parseInt(txt_opc.getText()));
+        
+//        articulocontrolador.ActualizarCliente(arti);
+    }//GEN-LAST:event_btn_actualizarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -172,12 +245,19 @@ public class ListarArticulo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_actualizar;
     private javax.swing.JButton btn_buscar;
-    private javax.swing.JComboBox<String> cbTipoBuscar;
+    private javax.swing.JComboBox<String> cbx_opc;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblDatos;
-    private javax.swing.JTextField txtBuscar;
+    private javax.swing.JTextArea txt_descripcion;
+    private javax.swing.JTextField txt_imprimir;
+    private javax.swing.JTextField txt_opc;
+    private javax.swing.JTextField txt_precio;
     // End of variables declaration//GEN-END:variables
 }
