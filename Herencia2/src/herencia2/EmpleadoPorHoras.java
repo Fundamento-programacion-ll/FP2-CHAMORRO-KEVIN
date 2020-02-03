@@ -40,5 +40,11 @@ public class EmpleadoPorHoras extends Empleado{
         
     }
 
+    @Override
+    public String toString() {
+        return "EmpleadoPorHoras "+" NOMBRE "+getNombre()+" APELLIDO "+getApellido()+" CI "+getCi() + " sueldo " + sueldo + " horas " + horas + " Salario por horas"+calcularIngresos() ;
+    }
+    
+
      
 }
