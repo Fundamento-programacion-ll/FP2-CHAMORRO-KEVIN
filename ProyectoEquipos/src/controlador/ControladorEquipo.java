@@ -17,10 +17,10 @@ public class ControladorEquipo {
     public void ingresarEquipo(Equipo eq){
         long fecha = eq.getFechaCreacion().getTime();
         java.sql.Date fechaCreacion = new java.sql.Date(fecha);
-        String sqlIngresar="INSERT INTO equipofutbol (idEquipo,nombreEquipo,liga,fechaCreacion,numeroInter,campeonActual) "
+        String sqlIngresar="INSERT INTO equipo (idEquipo,nombreEquipo,liga,fechaCreacion,numeroInter,campeonActual) "
                 + "VALUES(?,?,?,?,?,?)";
         try {
-            ps=conexion.getConxion().prepareStatement(sqlIngresar);
+            ps=conexion.getConexion().prepareStatement(sqlIngresar);
             ps.setInt(1, eq.getIdEquipo());
             ps.setString(2, eq.getNombreEquipo());
             ps.setString(3, eq.getLiga());
@@ -31,5 +31,6 @@ public class ControladorEquipo {
         } catch (SQLException ex) {
             Logger.getLogger(ControladorEquipo.class.getName()).log(Level.SEVERE, null, ex);
         }
+        conexion.Desconectarse();
     }
 }

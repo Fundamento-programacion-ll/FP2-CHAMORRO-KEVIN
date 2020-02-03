@@ -4,16 +4,16 @@
 /*==============================================================*/
 
 
-drop table if exists EQUIPOFUTBOL;
+drop table if exists EQUIPO;
 
 drop table if exists JUGADOR;
 
 drop table if exists PERFIL;
 
 /*==============================================================*/
-/* Table: EQUIPOFUTBOL                                          */
+/* Table: EQUIPO                                                */
 /*==============================================================*/
-create table EQUIPOFUTBOL
+create table EQUIPO
 (
    IDEQUIPO             int not null,
    NOMBREEQUIPO         varchar(40) not null,
@@ -55,5 +55,5 @@ create table PERFIL
 );
 
 alter table JUGADOR add constraint FK_CONTIENE foreign key (IDEQUIPO)
-      references EQUIPOFUTBOL (IDEQUIPO) on delete restrict on update restrict;
+      references EQUIPO (IDEQUIPO) on delete restrict on update restrict;
 
