@@ -12,9 +12,9 @@ public class IngresoJugador extends javax.swing.JFrame {
     ControladorJugador cj= new ControladorJugador();
     public IngresoJugador() {
         initComponents();
-        //setLocationRelativeTo(null);
-        setResizable(false);
-        setTitle("Ingreso Equipo");
+        setLocationRelativeTo(null);
+        setResizable(true);
+        setTitle("Ingreso Jugador");
         //setIconImage(new ImageIcon(getClass().getResource("/img/fondo1.jpg")).getImage());
         ((JPanel)getContentPane()).setOpaque(false);
         ImageIcon uno=new ImageIcon(this.getClass().getResource("/img/fondo1.jpg"));
@@ -42,30 +42,46 @@ public class IngresoJugador extends javax.swing.JFrame {
         txtNombreCamiseta = new javax.swing.JTextField();
         txtNumeroGoles = new javax.swing.JTextField();
         txtFechaIngreso = new com.toedter.calendar.JDateChooser();
-        cbIdEquipo = new javax.swing.JComboBox<>();
+        cbIdEquipo = new javax.swing.JComboBox<String>();
         btnCancelar = new javax.swing.JButton();
         btnAgregar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(408, 332));
 
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Ingreso Jugador");
 
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Id Jugador:");
 
+        jLabel3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Id Equipo:");
 
+        jLabel4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Nombre Jugador:");
 
+        jLabel5.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Número Camiseta:");
 
+        jLabel6.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Fecha de Ingreso:");
 
+        jLabel7.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Nombre Camiseta:");
 
+        jLabel8.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Número de Goles:");
 
-        cbIdEquipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar Equipo" }));
+        cbIdEquipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar Equipo" }));
 
         btnCancelar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnCancelar.setForeground(new java.awt.Color(255, 0, 0));
@@ -108,13 +124,13 @@ public class IngresoJugador extends javax.swing.JFrame {
                             .addComponent(txtNombreJugador)
                             .addComponent(txtFechaIngreso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(cbIdEquipo, 0, 150, Short.MAX_VALUE))))
-                .addContainerGap(80, Short.MAX_VALUE))
+                .addContainerGap(46, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(btnAgregar)
                 .addGap(18, 18, 18)
                 .addComponent(btnCancelar)
-                .addGap(104, 104, 104))
+                .addGap(120, 120, 120))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -149,11 +165,11 @@ public class IngresoJugador extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(txtNumeroGoles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAgregar)
                     .addComponent(btnCancelar))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         pack();
@@ -166,12 +182,9 @@ public class IngresoJugador extends javax.swing.JFrame {
             !txtFechaIngreso.getDateFormatString().trim().equals("") &&
             JOptionPane.showConfirmDialog(this, "¿Seguro que desea guardar datos?", "Confirmacion de ingreso",
             JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE) == 0) {
-            ju = new Jugador(ERROR, WIDTH, "", SOMEBITS, "", ju.getFechaIngreso(), 6);
-            /*ju =new Equipo(Integer.parseInt(txtIdEquipo.getText()),txtNombreEquipo.getText(),
-                txtLiga.getText(), txtFechaCreacion.getDate(),Integer.parseInt(txtNumeroInter.getText()) ,campeon);
-            ce.ingresarEquipo(eq);
-            JOptionPane.showMessageDialog(null,"Datos Ingresados Correctamente");
-            LimpiarPantalla();*/
+                ju = new Jugador(Integer.parseInt(txtIdJugador.getText()),cbIdEquipo.getSelectedIndex(),txtNombreJugador.getText(), Integer.parseInt(txtNumCamiseta.getText()), txtNombreCamiseta.getText(), 
+                txtFechaIngreso.getDate(), Integer.parseInt(txtNumeroGoles.getText()));
+            
         }else{
             JOptionPane.showMessageDialog(null,"Ingrese Todos Los datos");
         }
