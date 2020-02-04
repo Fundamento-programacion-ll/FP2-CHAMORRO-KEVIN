@@ -15,7 +15,7 @@ public class IngresoEquipo extends javax.swing.JFrame {
     Equipo eq =new Equipo();
     public IngresoEquipo() {
         initComponents();
-        //setLocationRelativeTo(null);
+        setLocationRelativeTo(null);
         setResizable(false);
         setTitle("Ingreso Equipo");
         //setIconImage(new ImageIcon(getClass().getResource("/img/fondo1.jpg")).getImage());
@@ -54,7 +54,7 @@ public class IngresoEquipo extends javax.swing.JFrame {
         txtNombreEquipo = new javax.swing.JTextField();
         txtNumeroInter = new javax.swing.JTextField();
         txtFechaCreacion = new com.toedter.calendar.JDateChooser();
-        cbCampeon = new javax.swing.JComboBox<>();
+        cbCampeon = new javax.swing.JComboBox<String>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -62,27 +62,27 @@ public class IngresoEquipo extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Ingreso Equipo");
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Nombre:");
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Fecha de fundación:");
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("ID Equipo:");
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Liga:");
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Número de internacionales:");
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Campeón actual:");
 
@@ -99,7 +99,7 @@ public class IngresoEquipo extends javax.swing.JFrame {
         btnCancelar.setForeground(new java.awt.Color(255, 0, 0));
         btnCancelar.setText("Cancelar");
 
-        cbCampeon.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No", "Sí" }));
+        cbCampeon.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "No", "Sí" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -134,7 +134,7 @@ public class IngresoEquipo extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(btnCancelar)
                         .addGap(18, 18, 18)))
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
