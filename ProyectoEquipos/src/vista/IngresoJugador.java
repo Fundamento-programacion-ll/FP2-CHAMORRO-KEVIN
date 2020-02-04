@@ -166,7 +166,7 @@ public class IngresoJugador extends javax.swing.JFrame {
             !txtFechaIngreso.getDateFormatString().trim().equals("") &&
             JOptionPane.showConfirmDialog(this, "¿Seguro que desea guardar datos?", "Confirmacion de ingreso",
             JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE) == 0) {
-            ju = new Jugador(ERROR, WIDTH, nombreJugador, SOMEBITS, nombreCamiseta, fechaIngreso, txtNumeroGoles.getText());
+            ju = new Jugador(ERROR, WIDTH, "", SOMEBITS, "", ju.getFechaIngreso(), 6);
             /*ju =new Equipo(Integer.parseInt(txtIdEquipo.getText()),txtNombreEquipo.getText(),
                 txtLiga.getText(), txtFechaCreacion.getDate(),Integer.parseInt(txtNumeroInter.getText()) ,campeon);
             ce.ingresarEquipo(eq);
