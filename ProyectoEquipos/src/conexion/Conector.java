@@ -11,7 +11,7 @@ public class Conector {
     
     Connection conexion = null;
     String url = "jdbc:mysql://localhost:3306/bdd_equipos?useSSL=false";
-    String usuario = "root";
+    String usuario = "admin";
     String password = "12345678";
     
     
