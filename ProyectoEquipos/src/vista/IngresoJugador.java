@@ -1,17 +1,26 @@
 package vista;
 
+import controlador.ControladorEquipo;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import controlador.ControladorJugador;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import modelo.Equipo;
 import modelo.Jugador;
 public class IngresoJugador extends javax.swing.JFrame {
     Jugador ju= new Jugador();
     ControladorJugador cj= new ControladorJugador();
+    ControladorEquipo ce= new ControladorEquipo();
+    ArrayList<Equipo> listaIdEquipo = null;
     public IngresoJugador() {
         initComponents();
+        cbIdEquipo.addItem("Seleccionar Equipo");
         setLocationRelativeTo(null);
         setResizable(true);
         setTitle("Ingreso Jugador");
@@ -22,6 +31,24 @@ public class IngresoJugador extends javax.swing.JFrame {
         fondo.setIcon(uno);
         getLayeredPane().add(fondo,JLayeredPane.FRAME_CONTENT_LAYER);
         fondo.setBounds(0,0,uno.getIconWidth(),uno.getIconHeight());
+        
+        try {
+            listaIdEquipo=ce.obtenerDatos();
+            for (Equipo equipo : listaIdEquipo) {
+                cbIdEquipo.addItem(String.valueOf(equipo.getIdEquipo()));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(IngresoJugador.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public void LimpiarPantalla(){
+        txtIdJugador.setText(null);
+        txtNombreCamiseta.setText(null);
+        txtNombreJugador.setText(null);
+        txtNumCamiseta.setText(null);
+        txtFechaIngreso.setDateFormatString(null);
+        cbIdEquipo.setSelectedIndex(0);
+        txtNumeroGoles.setText(null);
     }
     
     @SuppressWarnings("unchecked")
@@ -42,7 +69,7 @@ public class IngresoJugador extends javax.swing.JFrame {
         txtNombreCamiseta = new javax.swing.JTextField();
         txtNumeroGoles = new javax.swing.JTextField();
         txtFechaIngreso = new com.toedter.calendar.JDateChooser();
-        cbIdEquipo = new javax.swing.JComboBox<String>();
+        cbIdEquipo = new javax.swing.JComboBox<>();
         btnCancelar = new javax.swing.JButton();
         btnAgregar = new javax.swing.JButton();
 
@@ -81,11 +108,14 @@ public class IngresoJugador extends javax.swing.JFrame {
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Número de Goles:");
 
-        cbIdEquipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar Equipo" }));
-
         btnCancelar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnCancelar.setForeground(new java.awt.Color(255, 0, 0));
         btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
 
         btnAgregar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnAgregar.setForeground(new java.awt.Color(0, 255, 51));
@@ -184,12 +214,18 @@ public class IngresoJugador extends javax.swing.JFrame {
             JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE) == 0) {
                 ju = new Jugador(Integer.parseInt(txtIdJugador.getText()),cbIdEquipo.getSelectedIndex(),txtNombreJugador.getText(), Integer.parseInt(txtNumCamiseta.getText()), txtNombreCamiseta.getText(), 
                 txtFechaIngreso.getDate(), Integer.parseInt(txtNumeroGoles.getText()));
-            
+                cj.ingresarEquipo(ju);
+                JOptionPane.showMessageDialog(null,"Datos Ingresados Correctamente");
+                LimpiarPantalla();
         }else{
             JOptionPane.showMessageDialog(null,"Ingrese Todos Los datos");
         }
 
     }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
     public static void main(String args[]) {
 
