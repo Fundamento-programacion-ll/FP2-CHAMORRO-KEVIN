@@ -54,7 +54,7 @@ public class IngresoEquipo extends javax.swing.JFrame {
         txtNombreEquipo = new javax.swing.JTextField();
         txtNumeroInter = new javax.swing.JTextField();
         txtFechaCreacion = new com.toedter.calendar.JDateChooser();
-        cbCampeon = new javax.swing.JComboBox<String>();
+        cbCampeon = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -98,8 +98,13 @@ public class IngresoEquipo extends javax.swing.JFrame {
         btnCancelar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnCancelar.setForeground(new java.awt.Color(255, 0, 0));
         btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
 
-        cbCampeon.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "No", "Sí" }));
+        cbCampeon.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No", "Sí" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -197,6 +202,10 @@ public class IngresoEquipo extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
     /**
      * @param args the command line arguments
