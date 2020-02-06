@@ -6,14 +6,7 @@ import javax.swing.JOptionPane;
 public class Figura2  {
 
     public static void main(String[] args) {
-        /*p.Dibujo(p.getGraphics());
-        JFrame ventana= new JFrame();
-        ventana.add(p);
-        ventana.setSize(700, 400);
-        ventana.setVisible(true);
-        ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);*/
-        menu();
-        
+       menu(); 
     }
      public static void menu(){
          
