@@ -6,33 +6,55 @@ import javax.swing.JOptionPane;
 
 
 public class Circulo extends Punto {
-    private int radio;
+    private double radio;
 
     public Circulo() {
         String radio=JOptionPane.showInputDialog(null,"Ingrese el valor del radio");
         this.radio=Integer.parseInt(radio);
     }
 
-    public Circulo(int radio) {
+    public Circulo(double radio) {
         this.radio = radio;
     }
 
-    public Circulo(int radio, int x, int y) {
+    public Circulo(double radio, int x, int y) {
         super(x, y);
         this.radio = radio;
     }
 
-    public int getRadio() {
+    public double getRadio() {
         return radio;
     }
 
-    public void setRadio(int radio) {
+    public void setRadio(double radio) {
         this.radio = radio;
     }
-    public void Dibujo(Graphics g) {
-        g.setColor(Color.red);
-        g.drawOval(super.getX(), super.getY(), getRadio(),getRadio() );
-        System.out.println(super.getX()+" "+super.getY());
+     public double getDiametro() {
+
+        return 2 * this.radio;
+
+    }
+
+    public double getCircunferencia() {
+
+        return Math.PI * this.getDiametro();
+    }
+    public double getArea() {
+        return Math.PI * getRadio() * getRadio();
+    }
+    
+    public void paint(Graphics g) {        
+
+        g.setColor(Color.DARK_GRAY);
+
+        g.drawOval(super.getX(), super.getY(), (int) this.radio, (int) this.radio);
+    }
+    @Override
+
+    public String toString() {
+
+        return "\n Circulo\n" + super.toString() + " \n Radio= " + this.radio+ " \n Area= "+getArea()+" \n Circunferencia= "+getCircunferencia();
+
     }
     
 }

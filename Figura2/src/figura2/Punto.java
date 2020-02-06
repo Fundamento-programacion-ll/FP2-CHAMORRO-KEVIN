@@ -41,16 +41,14 @@ public class Punto extends Figura{
     }
     
     @Override
-    public void Dibujo(Graphics g) {
+    public void paint (Graphics g) {
         g.setColor(Color.red);
         g.fillOval(x, y, 20, 20);
-        System.out.println(this.x+" "+this.y);
     }
 
     @Override
     public String toString() {
         return "Puntos: "+"x=" + x + ", y=" + y;
     }
-    
-    
+
 }
