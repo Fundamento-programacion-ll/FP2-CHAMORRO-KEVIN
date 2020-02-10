@@ -1,19 +1,18 @@
 package modelo;
 
 public class Usuario {
+    private int id;
     private String usuario;
     private String clave;
     private char permiso;
     private String nombre;
 
-    public Usuario() {
+    public int getId() {
+        return id;
     }
 
-    public Usuario(String usuario, String clave, char permiso, String nombre) {
-        this.usuario = usuario;
-        this.clave = clave;
-        this.permiso = permiso;
-        this.nombre = nombre;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getUsuario() {
@@ -47,5 +46,30 @@ public class Usuario {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    
+
+    public Usuario() {
+    }
+    //Constructor con todas las variables
+    public Usuario(int id, String usuario, String clave, char permiso, String nombre) {
+        this.id = id;
+        this.usuario = usuario;
+        this.clave = clave;
+        this.permiso = permiso;
+        this.nombre = nombre;
+    }
+    //constructor para ingreso de datos
+
+    public Usuario(String usuario, String clave, char permiso, String nombre) {
+        this.usuario = usuario;
+        this.clave = clave;
+        this.permiso = permiso;
+        this.nombre = nombre;
+    }
+    //constructor para autenticar
+
+    public Usuario(String usuario, char permiso, String nombre) {
+        this.usuario = usuario;
+        this.permiso = permiso;
+        this.nombre = nombre;
+    }    
 }

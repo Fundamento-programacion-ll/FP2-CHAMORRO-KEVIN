@@ -1,70 +1,36 @@
 package vista;
 
 import java.awt.Dimension;
+import javax.swing.JDesktopPane;
 import javax.swing.JInternalFrame;
 import javax.swing.JMenu;
+import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 
 public class Menu extends javax.swing.JFrame {
 
     public Menu() {
         initComponents();
         setExtendedState(MAXIMIZED_BOTH); //para vizualizar en toda la pantalla
-        men_ModEli.setEnabled(false);
         men_consultas.setEnabled(false); //inhabilita las opciones del cliente
         men_Ingre.setEnabled(false);//inhabilita las opciones del cliente
-        men_Reporte.setEnabled(false);
     }
 
-    //genero los set y get SOLO de las opciones del menu
-
-    public JMenu getMen_Reporte() {
-        return men_Reporte;
+    public JMenuItem getjConsultaE() {
+        return jConsultaE;
     }
 
-    public void setMen_Reporte(JMenu men_Reporte) {
-        this.men_Reporte = men_Reporte;
-    }
-    
-
-    public JMenuItem getjLogin() {
-        return jLogin;
+    public void setjConsultaE(JMenuItem jConsultaE) {
+        this.jConsultaE = jConsultaE;
     }
 
-    public void setjLogin(JMenuItem jLogin) {
-        this.jLogin = jLogin;
+    public JMenuItem getjConsultaJ() {
+        return jConsultaJ;
     }
 
-    public JMenu getMen_Ingre() {
-        return men_Ingre;
-    }
-
-    public void setMen_Ingre(JMenu men_Ingre) {
-        this.men_Ingre = men_Ingre;
-    }
-
-    public JMenu getMen_ModEli() {
-        return men_ModEli;
-    }
-
-    public void setMen_ModEli(JMenu men_ModEli) {
-        this.men_ModEli = men_ModEli;
-    }
-
-    public JMenu getMen_consultas() {
-        return men_consultas;
-    }
-
-    public void setMen_consultas(JMenu men_consultas) {
-        this.men_consultas = men_consultas;
-    }
-
-    public JMenuItem getjConsultaM() {
-        return jConsultaM;
-    }
-
-    public void setjConsultaM(JMenuItem jConsultaM) {
-        this.jConsultaM = jConsultaM;
+    public void setjConsultaJ(JMenuItem jConsultaJ) {
+        this.jConsultaJ = jConsultaJ;
     }
 
     public JMenuItem getjConsultaU() {
@@ -75,9 +41,72 @@ public class Menu extends javax.swing.JFrame {
         this.jConsultaU = jConsultaU;
     }
 
-   
+    public JMenuItem getjIngreE() {
+        return jIngreE;
+    }
+
+    public void setjIngreE(JMenuItem jIngreE) {
+        this.jIngreE = jIngreE;
+    }
+
+    public JMenuItem getjIngreJ() {
+        return jIngreJ;
+    }
+
+    public void setjIngreJ(JMenuItem jIngreJ) {
+        this.jIngreJ = jIngreJ;
+    }
+
+    public JMenuItem getjIngreU() {
+        return jIngreU;
+    }
+
+    public void setjIngreU(JMenuItem jIngreU) {
+        this.jIngreU = jIngreU;
+    }
+
+    public JMenuItem getjLogin() {
+        return jLogin;
+    }
+
+    public void setjLogin(JMenuItem jLogin) {
+        this.jLogin = jLogin;
+    }
+
+    public JMenuItem getjLogout() {
+        return jLogout;
+    }
+
+    public void setjLogout(JMenuItem jLogout) {
+        this.jLogout = jLogout;
+    }
+
+
+    public JMenu getMen_Ingre() {
+        return men_Ingre;
+    }
+
+    public void setMen_Ingre(JMenu men_Ingre) {
+        this.men_Ingre = men_Ingre;
+    }
+
+    public JMenu getMen_consultas() {
+        return men_consultas;
+    }
+
+    public void setMen_consultas(JMenu men_consultas) {
+        this.men_consultas = men_consultas;
+    }
+
+    public JMenu getMen_sistema() {
+        return men_sistema;
+    }
+
+    public void setMen_sistema(JMenu men_sistema) {
+        this.men_sistema = men_sistema;
+    }
     
-   
+    
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -88,20 +117,14 @@ public class Menu extends javax.swing.JFrame {
         men_sistema = new javax.swing.JMenu();
         jLogin = new javax.swing.JMenuItem();
         jLogout = new javax.swing.JMenuItem();
-        men_consultas = new javax.swing.JMenu();
-        jConsultaP = new javax.swing.JMenuItem();
-        jConsultaM = new javax.swing.JMenuItem();
-        jConsultaU = new javax.swing.JMenuItem();
         men_Ingre = new javax.swing.JMenu();
-        jIngreP = new javax.swing.JMenuItem();
-        jIngreM = new javax.swing.JMenuItem();
+        jIngreJ = new javax.swing.JMenuItem();
+        jIngreE = new javax.swing.JMenuItem();
         jIngreU = new javax.swing.JMenuItem();
-        men_ModEli = new javax.swing.JMenu();
-        jDatosP = new javax.swing.JMenuItem();
-        jDatosM = new javax.swing.JMenuItem();
-        jDatosU = new javax.swing.JMenuItem();
-        men_Reporte = new javax.swing.JMenu();
-        jReporte = new javax.swing.JMenuItem();
+        men_consultas = new javax.swing.JMenu();
+        jConsultaJ = new javax.swing.JMenuItem();
+        jConsultaE = new javax.swing.JMenuItem();
+        jConsultaU = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -115,7 +138,7 @@ public class Menu extends javax.swing.JFrame {
         );
         jDesktopPanelLayout.setVerticalGroup(
             jDesktopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 279, Short.MAX_VALUE)
+            .addGap(0, 281, Short.MAX_VALUE)
         );
 
         men_sistema.setText("Sistema");
@@ -140,53 +163,25 @@ public class Menu extends javax.swing.JFrame {
 
         jMenuBar1.add(men_sistema);
 
-        men_consultas.setText("Consultas");
-
-        jConsultaP.setText("Consulta Personas");
-        jConsultaP.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jConsultaPActionPerformed(evt);
-            }
-        });
-        men_consultas.add(jConsultaP);
-
-        jConsultaM.setText("Consulta Medicinas");
-        jConsultaM.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jConsultaMActionPerformed(evt);
-            }
-        });
-        men_consultas.add(jConsultaM);
-
-        jConsultaU.setText("Consulta Usuarios del sisitema");
-        jConsultaU.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jConsultaUActionPerformed(evt);
-            }
-        });
-        men_consultas.add(jConsultaU);
-
-        jMenuBar1.add(men_consultas);
-
         men_Ingre.setText("Ingresos");
 
-        jIngreP.setText("Ingreso Persona");
-        jIngreP.addActionListener(new java.awt.event.ActionListener() {
+        jIngreJ.setText("Jugador");
+        jIngreJ.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jIngrePActionPerformed(evt);
+                jIngreJActionPerformed(evt);
             }
         });
-        men_Ingre.add(jIngreP);
+        men_Ingre.add(jIngreJ);
 
-        jIngreM.setText("Ingreso Medicina");
-        jIngreM.addActionListener(new java.awt.event.ActionListener() {
+        jIngreE.setText("Equipo");
+        jIngreE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jIngreMActionPerformed(evt);
+                jIngreEActionPerformed(evt);
             }
         });
-        men_Ingre.add(jIngreM);
+        men_Ingre.add(jIngreE);
 
-        jIngreU.setText("Ingreso usuarios para el sistema");
+        jIngreU.setText("Usuario para el sistema");
         jIngreU.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jIngreUActionPerformed(evt);
@@ -196,46 +191,33 @@ public class Menu extends javax.swing.JFrame {
 
         jMenuBar1.add(men_Ingre);
 
-        men_ModEli.setText("Modificar/Eliminar");
+        men_consultas.setText("Consultas/Manejo Datos");
 
-        jDatosP.setText("Personas");
-        jDatosP.addActionListener(new java.awt.event.ActionListener() {
+        jConsultaJ.setText("Jugador");
+        jConsultaJ.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jDatosPActionPerformed(evt);
+                jConsultaJActionPerformed(evt);
             }
         });
-        men_ModEli.add(jDatosP);
+        men_consultas.add(jConsultaJ);
 
-        jDatosM.setText("Medicinas");
-        jDatosM.addActionListener(new java.awt.event.ActionListener() {
+        jConsultaE.setText("Equipo");
+        jConsultaE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jDatosMActionPerformed(evt);
+                jConsultaEActionPerformed(evt);
             }
         });
-        men_ModEli.add(jDatosM);
+        men_consultas.add(jConsultaE);
 
-        jDatosU.setText("Usuarios del sistema");
-        jDatosU.addActionListener(new java.awt.event.ActionListener() {
+        jConsultaU.setText("Usuarios del sisitema");
+        jConsultaU.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jDatosUActionPerformed(evt);
+                jConsultaUActionPerformed(evt);
             }
         });
-        men_ModEli.add(jDatosU);
+        men_consultas.add(jConsultaU);
 
-        jMenuBar1.add(men_ModEli);
-
-        men_Reporte.setText("Reporte");
-
-        jReporte.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
-        jReporte.setText("Imprimir reporte");
-        jReporte.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jReporteActionPerformed(evt);
-            }
-        });
-        men_Reporte.add(jReporte);
-
-        jMenuBar1.add(men_Reporte);
+        jMenuBar1.add(men_consultas);
 
         setJMenuBar(jMenuBar1);
 
@@ -252,59 +234,6 @@ public class Menu extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jConsultaPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jConsultaPActionPerformed
-
-    }//GEN-LAST:event_jConsultaPActionPerformed
-
-    private void jLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLogoutActionPerformed
-        men_ModEli.setEnabled(false);
-        men_consultas.setEnabled(false); //inhabilita las opciones del cliente
-        men_Ingre.setEnabled(false);//inhabilita las opciones del cliente
-        jLogin.setEnabled(true);// volver a loguear
-        men_Reporte.setEnabled(false);
-    }//GEN-LAST:event_jLogoutActionPerformed
-
-    private void jLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLoginActionPerformed
-        
-    }//GEN-LAST:event_jLoginActionPerformed
-
-    private void jIngrePActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jIngrePActionPerformed
-      
-    }//GEN-LAST:event_jIngrePActionPerformed
-
-    private void jIngreMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jIngreMActionPerformed
-        
-    }//GEN-LAST:event_jIngreMActionPerformed
-
-    private void jConsultaMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jConsultaMActionPerformed
-        
-    }//GEN-LAST:event_jConsultaMActionPerformed
-
-    private void jConsultaUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jConsultaUActionPerformed
-        
-    }//GEN-LAST:event_jConsultaUActionPerformed
-
-    private void jIngreUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jIngreUActionPerformed
-        
-    }//GEN-LAST:event_jIngreUActionPerformed
-
-    private void jDatosPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jDatosPActionPerformed
-        
-    }//GEN-LAST:event_jDatosPActionPerformed
-
-    private void jDatosMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jDatosMActionPerformed
-        
-    }//GEN-LAST:event_jDatosMActionPerformed
-
-    private void jDatosUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jDatosUActionPerformed
-        
-    }//GEN-LAST:event_jDatosUActionPerformed
-
-    private void jReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jReporteActionPerformed
-        
-    }//GEN-LAST:event_jReporteActionPerformed
-
     private void showJInternalFrameCenterPosition(JInternalFrame jInternalFrame) {
         jDesktopPanel.add(jInternalFrame);
         Dimension componentDim = jInternalFrame.getSize();
@@ -315,6 +244,51 @@ public class Menu extends javax.swing.JFrame {
         jInternalFrame.setBounds((int) positionDim.getWidth(), (int) positionDim.getHeight(), jInternalFrame.getWidth(), jInternalFrame.getHeight());
         jInternalFrame.setVisible(true);
     }
+    
+    private void jLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLogoutActionPerformed
+        if( JOptionPane.showConfirmDialog(this, "¿Seguro que desea guardar datos?", "Confirmacion de ingreso",
+            JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE) == 0){
+            men_consultas.setEnabled(false); //inhabilita las opciones del cliente
+            men_Ingre.setEnabled(false);//inhabilita las opciones del cliente
+            jLogin.setEnabled(true);// volver a loguear
+        }
+    }//GEN-LAST:event_jLogoutActionPerformed
+
+    private void jLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLoginActionPerformed
+        Loguin login = new Loguin( this );
+        showJInternalFrameCenterPosition(login);
+    }//GEN-LAST:event_jLoginActionPerformed
+
+    private void jIngreJActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jIngreJActionPerformed
+        IngresoJugador jugador = new IngresoJugador();
+        showJInternalFrameCenterPosition(jugador);
+    }//GEN-LAST:event_jIngreJActionPerformed
+
+    private void jIngreEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jIngreEActionPerformed
+        IngresoEquipo equipo = new IngresoEquipo();
+        showJInternalFrameCenterPosition(equipo);
+    }//GEN-LAST:event_jIngreEActionPerformed
+
+    private void jConsultaEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jConsultaEActionPerformed
+        ConsultaEquipo ce = new ConsultaEquipo();
+        showJInternalFrameCenterPosition(ce);
+    }//GEN-LAST:event_jConsultaEActionPerformed
+
+    private void jConsultaUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jConsultaUActionPerformed
+        
+    }//GEN-LAST:event_jConsultaUActionPerformed
+
+    private void jIngreUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jIngreUActionPerformed
+        IngresoUsuario usuario = new IngresoUsuario();
+        showJInternalFrameCenterPosition(usuario);
+    }//GEN-LAST:event_jIngreUActionPerformed
+
+    private void jConsultaJActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jConsultaJActionPerformed
+        ConsultaJugador cj = new ConsultaJugador();
+        showJInternalFrameCenterPosition(cj);
+    }//GEN-LAST:event_jConsultaJActionPerformed
+
+   
     
     /**
      * @param args the command line arguments
@@ -367,24 +341,19 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem jConsultaM;
-    private javax.swing.JMenuItem jConsultaP;
+    private javax.swing.JMenuItem jConsultaE;
+    private javax.swing.JMenuItem jConsultaJ;
     private javax.swing.JMenuItem jConsultaU;
-    private javax.swing.JMenuItem jDatosM;
-    private javax.swing.JMenuItem jDatosP;
-    private javax.swing.JMenuItem jDatosU;
     private javax.swing.JDesktopPane jDesktopPanel;
-    private javax.swing.JMenuItem jIngreM;
-    private javax.swing.JMenuItem jIngreP;
+    private javax.swing.JMenuItem jIngreE;
+    private javax.swing.JMenuItem jIngreJ;
     private javax.swing.JMenuItem jIngreU;
     private javax.swing.JMenuItem jLogin;
     private javax.swing.JMenuItem jLogout;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jReporte;
     private javax.swing.JMenu men_Ingre;
-    private javax.swing.JMenu men_ModEli;
-    private javax.swing.JMenu men_Reporte;
     private javax.swing.JMenu men_consultas;
     private javax.swing.JMenu men_sistema;
     // End of variables declaration//GEN-END:variables
+
 }

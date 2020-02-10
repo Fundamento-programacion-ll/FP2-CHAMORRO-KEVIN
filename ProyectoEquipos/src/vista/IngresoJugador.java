@@ -13,7 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import modelo.Equipo;
 import modelo.Jugador;
-public class IngresoJugador extends javax.swing.JFrame {
+public class IngresoJugador extends javax.swing.JInternalFrame {
     Jugador ju= new Jugador();
     ControladorJugador cj= new ControladorJugador();
     ControladorEquipo ce= new ControladorEquipo();
@@ -21,9 +21,6 @@ public class IngresoJugador extends javax.swing.JFrame {
     public IngresoJugador() {
         initComponents();
         cbIdEquipo.addItem("Seleccionar Equipo");
-        setLocationRelativeTo(null);
-        setResizable(true);
-        setTitle("Ingreso Jugador");
         //setIconImage(new ImageIcon(getClass().getResource("/img/fondo1.jpg")).getImage());
         ((JPanel)getContentPane()).setOpaque(false);
         ImageIcon uno=new ImageIcon(this.getClass().getResource("/img/fondo1.jpg"));
@@ -33,7 +30,7 @@ public class IngresoJugador extends javax.swing.JFrame {
         fondo.setBounds(0,0,uno.getIconWidth(),uno.getIconHeight());
         
         try {
-            listaIdEquipo=ce.obtenerDatos();
+            listaIdEquipo=ce.ObtenerDatosEquipo();
             for (Equipo equipo : listaIdEquipo) {
                 cbIdEquipo.addItem(String.valueOf(equipo.getIdEquipo()));
             }
@@ -214,7 +211,7 @@ public class IngresoJugador extends javax.swing.JFrame {
             JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE) == 0) {
                 ju = new Jugador(Integer.parseInt(txtIdJugador.getText()),cbIdEquipo.getSelectedIndex(),txtNombreJugador.getText(), Integer.parseInt(txtNumCamiseta.getText()), txtNombreCamiseta.getText(), 
                 txtFechaIngreso.getDate(), Integer.parseInt(txtNumeroGoles.getText()));
-                cj.ingresarEquipo(ju);
+                cj.IngresarJugador(ju);
                 JOptionPane.showMessageDialog(null,"Datos Ingresados Correctamente");
                 LimpiarPantalla();
         }else{

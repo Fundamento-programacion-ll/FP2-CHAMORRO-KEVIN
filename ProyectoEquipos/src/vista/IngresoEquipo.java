@@ -1,7 +1,5 @@
 package vista;
 
-import controlador.ControladorEquipo;
-import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
@@ -10,14 +8,11 @@ import javax.swing.JPanel;
 import modelo.Equipo;
 import controlador.ControladorEquipo;
 
-public class IngresoEquipo extends javax.swing.JFrame {
+public class IngresoEquipo extends javax.swing.JInternalFrame {
     ControladorEquipo ce= new ControladorEquipo();
     Equipo eq =new Equipo();
     public IngresoEquipo() {
         initComponents();
-        setLocationRelativeTo(null);
-        setResizable(false);
-        setTitle("Ingreso Equipo");
         //setIconImage(new ImageIcon(getClass().getResource("/img/fondo1.jpg")).getImage());
         ((JPanel)getContentPane()).setOpaque(false);
         ImageIcon uno=new ImageIcon(this.getClass().getResource("/img/fondo1.jpg"));
@@ -194,7 +189,7 @@ public class IngresoEquipo extends javax.swing.JFrame {
             }
             eq =new Equipo(Integer.parseInt(txtIdEquipo.getText()),txtNombreEquipo.getText(),
                     txtLiga.getText(), txtFechaCreacion.getDate(),Integer.parseInt(txtNumeroInter.getText()) ,campeon);
-            ce.ingresarEquipo(eq);
+            ce.IngresarEquipo(eq);
             JOptionPane.showMessageDialog(null,"Datos Ingresados Correctamente");
             LimpiarPantalla();    
         }else{

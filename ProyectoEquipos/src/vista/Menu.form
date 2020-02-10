@@ -33,61 +33,30 @@
             </MenuItem>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="men_consultas">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Consultas"/>
-          </Properties>
-          <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jConsultaP">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Consulta Personas"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jConsultaPActionPerformed"/>
-              </Events>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jConsultaM">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Consulta Medicinas"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jConsultaMActionPerformed"/>
-              </Events>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jConsultaU">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Consulta Usuarios del sisitema"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jConsultaUActionPerformed"/>
-              </Events>
-            </MenuItem>
-          </SubComponents>
-        </Menu>
         <Menu class="javax.swing.JMenu" name="men_Ingre">
           <Properties>
             <Property name="text" type="java.lang.String" value="Ingresos"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jIngreP">
+            <MenuItem class="javax.swing.JMenuItem" name="jIngreJ">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Ingreso Persona"/>
+                <Property name="text" type="java.lang.String" value="Jugador"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jIngrePActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jIngreJActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jIngreM">
+            <MenuItem class="javax.swing.JMenuItem" name="jIngreE">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Ingreso Medicina"/>
+                <Property name="text" type="java.lang.String" value="Equipo"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jIngreMActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jIngreEActionPerformed"/>
               </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jIngreU">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Ingreso usuarios para el sistema"/>
+                <Property name="text" type="java.lang.String" value="Usuario para el sistema"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jIngreUActionPerformed"/>
@@ -95,51 +64,33 @@
             </MenuItem>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="men_ModEli">
+        <Menu class="javax.swing.JMenu" name="men_consultas">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Modificar/Eliminar"/>
+            <Property name="text" type="java.lang.String" value="Consultas/Manejo Datos"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jDatosP">
+            <MenuItem class="javax.swing.JMenuItem" name="jConsultaJ">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Personas"/>
+                <Property name="text" type="java.lang.String" value="Jugador"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jDatosPActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jConsultaJActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jDatosM">
+            <MenuItem class="javax.swing.JMenuItem" name="jConsultaE">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Medicinas"/>
+                <Property name="text" type="java.lang.String" value="Equipo"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jDatosMActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jConsultaEActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jDatosU">
+            <MenuItem class="javax.swing.JMenuItem" name="jConsultaU">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Usuarios del sistema"/>
+                <Property name="text" type="java.lang.String" value="Usuarios del sisitema"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jDatosUActionPerformed"/>
-              </Events>
-            </MenuItem>
-          </SubComponents>
-        </Menu>
-        <Menu class="javax.swing.JMenu" name="men_Reporte">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Reporte"/>
-          </Properties>
-          <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jReporte">
-              <Properties>
-                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
-                  <KeyStroke key="Ctrl+P"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Imprimir reporte"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jReporteActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jConsultaUActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
@@ -195,7 +146,7 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="279" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="281" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>
