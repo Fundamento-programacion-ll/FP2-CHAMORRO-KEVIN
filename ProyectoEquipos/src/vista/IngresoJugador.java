@@ -13,7 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import modelo.Equipo;
 import modelo.Jugador;
-public class IngresoJugador extends javax.swing.JInternalFrame {
+public class IngresoJugador extends javax.swing.JFrame {
     Jugador ju= new Jugador();
     ControladorJugador cj= new ControladorJugador();
     ControladorEquipo ce= new ControladorEquipo();
@@ -66,11 +66,11 @@ public class IngresoJugador extends javax.swing.JInternalFrame {
         txtNombreCamiseta = new javax.swing.JTextField();
         txtNumeroGoles = new javax.swing.JTextField();
         txtFechaIngreso = new com.toedter.calendar.JDateChooser();
-        cbIdEquipo = new javax.swing.JComboBox<>();
+        cbIdEquipo = new javax.swing.JComboBox<String>();
         btnCancelar = new javax.swing.JButton();
         btnAgregar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(408, 332));
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -196,7 +196,7 @@ public class IngresoJugador extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAgregar)
                     .addComponent(btnCancelar))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         pack();

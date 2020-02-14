@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import modelo.Jugador;
 
-public class ConsultaJugador extends javax.swing.JInternalFrame {
+public class ConsultaJugador extends javax.swing.JFrame {
     
     private DefaultTableModel dtm;
     List<Jugador> listaJugador= null;

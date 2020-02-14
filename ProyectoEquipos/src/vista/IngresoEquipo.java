@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 import modelo.Equipo;
 import controlador.ControladorEquipo;
 
-public class IngresoEquipo extends javax.swing.JInternalFrame {
+public class IngresoEquipo extends javax.swing.JFrame {
     ControladorEquipo ce= new ControladorEquipo();
     Equipo eq =new Equipo();
     public IngresoEquipo() {

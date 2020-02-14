@@ -15,7 +15,7 @@ public class ControladorJugador {
     ResultSet rs = null;    
     public ArrayList ObtenerDatosJugador() throws SQLException{
         ArrayList<Jugador> listaJugadores= new ArrayList<>();        
-        String selectDatos = "select * from equipo";
+        String selectDatos = "select * from JUGADOR";
         ps = conexion.getConexion().prepareStatement(selectDatos);
         rs = ps.executeQuery();        
         while (rs.next()) {            
@@ -51,7 +51,7 @@ public class ControladorJugador {
             Logger.getLogger(ControladorEquipo.class.getName()).log(Level.SEVERE, null, ex);
         }finally {
             try {
-                rs.close();
+                ps.close();
             } catch (SQLException ex) {
                 Logger.getLogger(ControladorJugador.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -67,11 +67,11 @@ public class ControladorJugador {
             ps.setInt(1, id);
             rs = ps.executeQuery();
             while (rs.next()) {
-                ju.setIdEquipo(id);
+                ju.setIdJugador(rs.getInt(1));
                 ju.setIdEquipo(rs.getInt(2));
                 ju.setNombreJugador(rs.getString(3));
-                ju.setNombreCamiseta(rs.getString(4));
-                ju.setNumeroCamiseta(rs.getInt(5));
+                ju.setNumeroCamiseta(rs.getInt(4));
+                ju.setNombreCamiseta(rs.getString(5));
                 ju.setFechaIngreso(rs.getDate(6));
                 ju.setGoles(rs.getInt(7));
             }
@@ -97,11 +97,11 @@ public class ControladorJugador {
             ps.setInt(1, id);
             rs = ps.executeQuery();
             while (rs.next()) {
-                ju.setIdEquipo(rs.getInt(1));
+                ju.setIdJugador(rs.getInt(1));
                 ju.setIdEquipo(rs.getInt(2));
                 ju.setNombreJugador(rs.getString(3));
-                ju.setNombreCamiseta(rs.getString(4));
-                ju.setNumeroCamiseta(rs.getInt(5));
+                ju.setNumeroCamiseta(rs.getInt(4));
+                ju.setNombreCamiseta(rs.getString(5));
                 ju.setFechaIngreso(rs.getDate(6));
                 ju.setGoles(rs.getInt(7));
             }
@@ -130,8 +130,8 @@ public class ControladorJugador {
                 ju.setIdEquipo(rs.getInt(1));
                 ju.setIdEquipo(rs.getInt(2));
                 ju.setNombreJugador(rs.getString(3));
-                ju.setNombreCamiseta(rs.getString(4));
-                ju.setNumeroCamiseta(rs.getInt(5));
+                ju.setNombreCamiseta(rs.getString(5));
+                ju.setNumeroCamiseta(rs.getInt(4));
                 ju.setFechaIngreso(rs.getDate(6));
                 ju.setGoles(rs.getInt(7));
             }
@@ -140,6 +140,7 @@ public class ControladorJugador {
         } finally {
             try {
                 rs.close();
+                ps.close();
             } catch (SQLException ex) {
                 Logger.getLogger(ControladorJugador.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -160,8 +161,8 @@ public class ControladorJugador {
                 ju.setIdEquipo(rs.getInt(1));
                 ju.setIdEquipo(rs.getInt(2));
                 ju.setNombreJugador(rs.getString(3));
-                ju.setNombreCamiseta(rs.getString(4));
-                ju.setNumeroCamiseta(rs.getInt(5));
+                ju.setNombreCamiseta(rs.getString(5));
+                ju.setNumeroCamiseta(rs.getInt(4));
                 ju.setFechaIngreso(rs.getDate(6));
                 ju.setGoles(rs.getInt(7));
             }

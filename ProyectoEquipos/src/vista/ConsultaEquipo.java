@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import modelo.Equipo;
 
-public class ConsultaEquipo extends javax.swing.JInternalFrame {
+public class ConsultaEquipo extends javax.swing.JFrame {
     
     private DefaultTableModel dtm;
     public static int idJugador =1;
